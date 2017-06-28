@@ -1,0 +1,310 @@
+@import '../../node_modules/fullpage.js/dist/jquery.fullpage.min.css';
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+body {
+  overflow: hidden;
+}
+body.hide {
+  display: none;
+}
+.page-content {
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  user-select: none;
+}
+.page-left, .page-right {
+  display: flex;
+}
+.page-left {
+  justify-content: center;
+  align-items: flex-start;
+  position: absolute;
+  bottom: 35px;
+  z-index: 1100;
+}
+.page-left img {
+  width: 150px;
+  transition: all 0.8s ease;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate3d(0, 40%, 0);
+}
+.page-left img.slide-in-up {
+  opacity: 1;
+  visibility: visible;
+  transform: translate3d(0, 0, 0);
+}
+.page-right {
+  position: relative;
+  z-index: 1000;
+}
+.page-right img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1100;
+  transition: all 0.8s ease;
+  opacity: 0;
+  visibility: hidden;
+}
+.page-right img.page-right-zero, .page-right img.page-right-one, .page-right img.page-right-two {
+  transform: translate3d(50%, 0, 0);
+}
+.page-right img.fade-in-right {
+  opacity: 1;
+  visibility: visible;
+  transform: translate3d(0, 0, 0);
+}
+.page-right img.page-right-three {
+  transform: translate3d(-50%, 0, 0);
+}
+.page-right img.fade-in-left {
+  opacity: 1;
+  visibility: visible;
+  transform: translate3d(0, 0, 0);
+}
+.page-right img.page-right-zero, .page-right img.page-right-one, .page-right img.page-right-two {
+  z-index: 1200;
+}
+.page-content img {
+  display: block;
+  max-width: 100%;
+}
+.page-left, .page-right {
+  flex: 1 1;
+}
+.page-next {
+  display: flex;
+  align-items: flex-end;
+  width: 51px;
+  height: 24px;
+  position: absolute;
+  left: 50%;
+  bottom: 50px;
+  margin-left: -26px;
+  z-index: 1200;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  transform: scale(0, 0);
+  color: #000;
+}
+.page-next svg {
+  width: 51px;
+  height: 31px;
+}
+.page-next svg rect {
+  fill: #000;
+}
+.page-next.scale-up {
+  transform: scale(1, 1);
+}
+#fp-nav.left {
+  top: 90px;
+  left: 30px;
+}
+#fp-nav ul li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 10px 0;
+}
+#fp-nav ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1;
+}
+#fp-nav ul li a span {
+  display: block;
+  background-color: #000;
+  border-radius: 0;
+  height: 8px;
+  width: 8px;
+  position: relative;
+  margin: 0;
+  left: none;
+  right: 0;
+}
+#fp-nav ul li a.active span {
+  margin: 0;
+  border-radius: 0;
+  height: 12px;
+  width: 12px;
+  background-color:#1478f0;
+}
+
+#fp-nav ul li a.active span,
+#fp-nav ul li:hover a.active span {
+  height: 12px;
+  width: 12px;
+  border-radius: 0;
+  margin: 0;
+ }
+ #fp-nav ul li:hover a span {
+  width: 12px;
+  height: 12px;
+  border-radius: 0;
+  margin: 0;
+}
+.mobile-download-trigger {
+  width: 60px;
+  height: 90px;
+  background-image: url('https://wpimg.wallstcn.com/wscn-app/download-background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  bottom: 0;
+  left: -2px;
+  z-index: 1200;
+  display: none;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding-left: 15px;
+  padding-bottom: 15px;
+  transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-100%, 20px) rotate(30deg);
+  transform-origin: 0 0;
+}
+.mobile-download-trigger.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0, 0) rotate(0);
+}
+.mobile-download-trigger.show img {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+.mobile-download-trigger img {
+  display: block;
+  width: 18px;
+  height: 26px;
+  transition: all 0.3s ease;
+  transition-delay: 0.3s;
+  transform: scale(0);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.mobile-modal {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(20, 120, 240, 0.9);
+  z-index: 3300;
+  transition: all 0.5s ease;
+  transform: translate(0, 100%);
+  opacity: 0;
+  visibility: hidden;
+}
+.mobile-modal.show {
+  transform: translate(0, 0);
+  opacity: 1;
+  visibility: visible;
+}
+.mobile-modal.show .modal-close {
+  transform: scale(1);
+  opacity: 1;
+  visibility: visible;
+}
+.mobile-modal.show .app-logo, .mobile-modal.show .app-links {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0, 0);
+}
+.app-apple-link, .app-android-link, .app-logo, .modal-close {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  display: block;
+}
+.modal-close {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  z-index: 3100;
+  width: 26px;
+  height: 26px;
+  background-image: url('https://wpimg.wallstcn.com/wscn-app/close.svg');
+  transition: all 0.3s ease;
+  transition-delay: 0.5s;
+  transform: scale(0);
+  opacity: 0;
+  visibility: hidden;
+  cursor: pointer;
+}
+.mobile-body {
+  flex: 1 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.app-logo {
+  display: block;
+  width: 200px;
+  height: 130px;
+  background-image: url('https://wpimg.wallstcn.com/wscn-app/logo.svg');
+  transition: all 0.5s ease;
+  transition-delay: 1s;
+  opacity: 0;
+  visibility: hidden;
+}
+.app-links {
+  transition: all 0.5s ease;
+  transition-delay: 1s;
+  opacity: 0;
+  visibility: hidden;
+}
+.app-apple-link {
+  margin-top: 100px;
+  margin-bottom: 30px;
+  width: 180px;
+  height: 63px;
+  background-image: url('https://wpimg.wallstcn.com/wscn-app/iphone.svg');
+}
+.app-android-link {
+  width: 180px;
+  height: 63px;
+  background-image: url('https://wpimg.wallstcn.com/wscn-app/android.svg');
+}
+@media (max-width: 640px) {
+  #fp-nav {
+    display: none !important;
+  }
+  .page-content {
+    display: block;
+    background-image: none;
+  }
+  .page-left, .page-right {
+    width: 100%;
+  }
+  .page-right {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .page-next {
+    width: 24px;
+    bottom: 6px;
+    margin-left: -12px;
+  }
+  .mobile-download-trigger {
+    display: flex;
+  }
+  .page-next svg {
+    width: 24px;
+  }
+}

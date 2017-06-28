@@ -1,0 +1,138 @@
+@import '../../node_modules/fullpage.js/dist/jquery.fullpage.min.css';
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+body {
+  overflow: hidden;
+}
+.page-content {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  user-select: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 900;
+}
+.page-1 .page-content {
+  background-image: url('https://wpimg.wallstcn.com/wscn-app/bg1.jpg');
+}
+.page-2 .page-content {
+  background-image: url('https://wpimg.wallstcn.com/wscn-app/bg2.jpg');
+}
+.page-3 .page-content {
+  background-image: url('https://wpimg.wallstcn.com/wscn-app/bg3.jpg');
+}
+.page-4 .page-content {
+  background-image: url('https://wpimg.wallstcn.com/wscn-app/bg4.jpg');
+}
+.page-content .qrcode {
+  display: block;
+  width: 220px;
+  position: absolute;
+  left: 100px;
+  bottom: 100px;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s ease;
+  transform: translateY(40%);
+}
+.page-content .qrcode.slide-in-up {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.page-content .title {
+  display: block;
+  width: 385px;
+  position: absolute;
+  top: 100px;
+  right: 100px;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s ease;
+  transform: translateY(-40%);
+}
+.page-content .title.slide-in-down {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.page-next {
+  display: block;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 50%;
+  bottom: 60px;
+  transform: translateX(-50%);
+  z-index: 1100;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.5);
+  transition: all 0.5s ease;
+}
+.page-next.scale-up {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+.page-next svg {
+  width: 40px;
+  height: 40px;
+}
+#fp-nav.left {
+  top: 90px;
+  left: 30px;
+}
+#fp-nav ul li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 10px 0;
+}
+#fp-nav ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1;
+}
+#fp-nav ul li a span {
+  display: block;
+  background-color: #fff;
+  border-radius: 0;
+  height: 8px;
+  width: 8px;
+  position: relative;
+  margin: 0;
+  left: none;
+  right: 0;
+}
+#fp-nav ul li a.active span {
+  margin: 0;
+  border-radius: 0;
+  height: 12px;
+  width: 12px;
+  background-color:#1478f0;
+}
+
+#fp-nav ul li a.active span,
+#fp-nav ul li:hover a.active span {
+  height: 12px;
+  width: 12px;
+  border-radius: 0;
+  margin: 0;
+ }
+ #fp-nav ul li:hover a span {
+  width: 12px;
+  height: 12px;
+  border-radius: 0;
+  margin: 0;
+}
